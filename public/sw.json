@@ -1,26 +1,33 @@
-self.addEventListener("install", e => {
-  e.waitUntil(
-    // Give the cache a name
-    caches.open("glitch-in-bio-pwa").then(cache => {
-      // Cache the homepage and stylesheets - add any assets you want to cache!
-      return cache.addAll([
-        "/", 
-        "/styles/style.css",
-        "/styles/themes/glitch.css",
-        "/styles/themes/gallery.css",
-        "/styles/themes/menu.css",
-        "/styles/themes/custom-theme.css"
-      ]);
-    })
-  );
-});
+import { resolve } from "path";
+import { defineConfig } from "vite";
+// Slightly modified from https://github.com/alexlafroscia/vite-plugin-handlebars
+import handlebars from "@glitchdotcom/vite-plugin-handlebars";
 
-// Network falling back to cache approach 
-// https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    fetch(event.request).catch(function() {
-      return caches.match(event.request);
-    })
-  );
+// https://vitejs.dev/config/
+export default defineConfig(async ({ command, mode }) => {
+  return {
+    plugins: [
+      handlebars({
+        partialDirectory: resolve(__dirname, "layout"),
+        settingsFile: 'settings.json',
+        helpers: {
+          hostasclass: value => new URL(value).hostname.replace(/\./g, "_")
+        },
+        reloadOnPartialChange: true
+      })
+    ],
+    build: {
+      cssCodeSplit: false,
+      outDir: "build"
+    },
+    optimizeDeps: {
+      exclude: ['./settings.json']
+    },
+    server: {
+      strictPort: true,
+      hmr: {
+        port: 443
+      }
+    }
+  };
 });
