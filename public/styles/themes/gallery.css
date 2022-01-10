@@ -1,0 +1,152 @@
+/******************************************************************************
+TIP: Gallery theme displays your links with background images from settings.json
+
+Edit / copy or create your own CSS file in public/styles/themes
+Select your chosen CSS by adding the theme name (e.g. gallery) in settings.json
+******************************************************************************/
+/* Fonts */
+@font-face {
+    font-family: MTRMKtitle;
+    src: url("https://cdn.glitch.com/5403985f-c618-4935-8236-9feef6f16844%2FMagicKeyTitlingFont.ttf?v=1624219939229") format("TrueType");
+}
+
+
+
+@import url("https://cdn.glitch.com/5403985f-c618-4935-8236-9feef6f16844%2FMagicKeyTitlingFont.ttf?v=1624219939229");
+
+@font-face {
+    font-family: MTRMKstyle;
+    src: url("https://cdn.glitch.com/5403985f-c618-4935-8236-9feef6f16844%2FMagicKeyTitlingFont.ttf?v=1624219939229") format("TrueType");
+}
+
+@import url(https://cdn.glitch.global/6a55f4e8-5360-496e-a672-8513a7c8628c/FREESCPT.TTF?v=1641713626475);
+
+:root {
+    --avatar-max-width: 50px;
+    --color-bg: #2b2622;
+    --color-bg-alt: #8c8c8c;
+    --color-text-main: #f9dea2;
+    --color-primary: #f9dea2;
+    --glitch-gray-5: #f9dea2;
+    --glitch-gray-4: #f9dea2;
+    --glitch-gray-3: #8c8c8c;
+    --font-family: "MTRMKtitle";
+    --font-family: "MTRMKstyle";
+}
+
+.content {
+    max-width: 1200px;
+    position: relative;
+}
+
+.avatar {
+    border-radius: 0;
+}
+
+body {
+    background: var(--color-bg);
+}
+
+h1 {
+    font-family: MTRMKtitle;
+    font-size: 6rem;
+    position: absolute;
+    top: 6px;
+    left: 68px;
+    font-weight: normal;
+    color: var(--glitch-gray-5);
+    text-transform: uppercase;
+}
+
+ul.link-list {
+    width: 100%;
+    display: grid;
+    grid-gap: 1em;
+    margin: 8.5rem 0 4em 0;
+}
+
+@media (min-width: 500px) {
+    ul.link-list {
+        /*Define our columns */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+ul.link-list li {
+    position: relative;
+    aspect-ratio: 1;
+    min-height: 200px;
+    background-color: #f9dea2;
+    border-radius: 0;
+    overflow: hidden;
+    margin: 0;
+    font-family: MTRMKstyle;
+    font-size: 1em;
+}
+
+    ul.link-list li a {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+a:not(.btn--remix):link,
+a:not(.btn--remix):visited {
+    font-weight: bold;
+    color: var(--color-bg);
+}
+
+ul.link-list li a span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.5em;
+    padding-top: 1.5em;
+    width: 100%;
+    min-height: 25%;
+    display: inline-block;
+    margin-top: 40%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.75);
+    transition: min-height 100ms, padding-top 100ms;
+}
+
+ul.link-list li a:hover span {
+    min-height: 100%;
+    padding-top: 48%;
+}
+/* Add urls for any images you want to display in settings.json for each link */
+ul.link-list li a img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+ul.link-list li a:hover img {
+    display: none;
+}
+
+ul.link-list li a:link,
+ul.link-list li a:visited {
+    border: none;
+}
+
+.social-profile-icon path {
+    fill: var(--glitch-gray-3);
+}
+
+.avatar-container {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+.footer {
+    color: var(--glitch-gray-5);
+    border-top: 2px solid var(--glitch-gray-3);
+}
