@@ -1,31 +1,48 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ settings.metaTitle }}</title>
+    <title>MTR Magic Key</title>
 
-    {{> head }}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!--- THEMES: in settings.json change 'glitch' to 'gallery', 'menu', or any other theme in the layout/themes folder --->
-    <link rel="stylesheet" type="text/css" href="/styles/themes/{{settings.theme}}.css" />
+
+    <meta name="description" content="MTR Magic Key" />
+    <meta property="og:image" content="https://github.com/mtrmagickey/mtrmagickey-site/blob/main/assets/justkeyandtext.png" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="https://github.com/mtrmagickey/mtrmagickey-site/blob/main/assets/justkeyandtext.png" />
+    <link rel="stylesheet" type="text/css" href="https://github.com/mtrmagickey/mtrmagickey-site/blob/main/public/styles/style.css" />
+    <!--PWA requirements-->
+    <meta name="theme-color" content="#f9dea2" />
+
+
+    <link rel="stylesheet" type="text/css" href="https://github.com/mtrmagickey/mtrmagickey-site/blob/main/public/styles/themes/gallery.css" />
 </head>
+
+
 <body>
     <main>
         <div class="wrapper">
             <div class="content">
 
-                {{> avatar }}
+                <!-- Avatar Image -->
+                <div class="avatar-container">
+                    <img src="https://github.com/mtrmagickey/mtrmagickey-site/blob/main/assets/justkeyandtext.png" class="avatar" alt="MTR Magic Key" />
+                </div>
+
+
                 {{> name }}
 
                 <!--- NEXT STEPS: Want to add a bio or some text? Just add a <p> here:
-                <p>
-                  Put anything you like here!
-                </p>
-                --->
+    <p>
+      Put anything you like here!
+    </p>
+    --->
                 <!--- NEXT STEPS: Easy, responsive YouTube/iframe embeds? We've got a helper for that:
-                <div class="video-wrapper__16-9">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/GSP0b85BKmY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                --->
+    <div class="video-wrapper__16-9">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/GSP0b85BKmY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    --->
                 {{> links }}
 
             </div>
